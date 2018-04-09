@@ -55,7 +55,10 @@ class SaveMeteor {
     }
     
     void write(String meteorData){
-                if( conn == null) return;
+        if( conn == null) return;
+        
+        //避免查到沒有資料，出現空表格，仍進行寫入
+        if(meteorData.matches("..*,,,,,,,,,,..*"))  return;
         
         String[] dataUnit = meteorData.split(",");
         
